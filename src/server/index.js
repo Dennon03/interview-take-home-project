@@ -1,6 +1,6 @@
-import express from "express";
-import path from "path";
-import products from "./data/products.json" assert { type: "json" };
+const express = require("express");
+const path = require("path");
+const products = require("./data/products.json");
 
 const app = express();
 
