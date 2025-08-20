@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Mina', sans-serif;
+}
+
+.navbar {
+    position: sticky; /* sticks navbar to top on scroll */
+    top: 0; /* sets navbar to top of page */
+    width: 100%; /* spans full width of page */
+    height: 3rem; /* 3 rem in height (rem works better across different os) */
+    background-color: #1E90FF;
+    color: black; /* text color */
+    z-index: 100; /* ensures stays above page background */
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between; /* space between left and right */
+    align-items: center; /* vertical center */
+}
+
+.navbar-left {
+    padding-left: 1rem;
+    font-weight: bold;
+}
+
+.navbar-right img.cart-icon {
+    padding-right: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+#products-container {
+    padding: 1rem; /* adds space on left and right of search box*/
+}
+
+#search-products {
+    width: 100%;          /* fills the container */
+    height: 2rem;         
+    box-sizing: border-box; /* padding in width */
+}
+
+#search-products::placeholder {
+    font-family: 'Mina', sans-serif;
+}
+
+#products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* desktop default */
+    gap: 1rem; /* space between rows and columns */
+    padding: 1rem;
+    justify-content: center; /* center the grid horizontally */
+    max-width: 1200px; /* limit total grid width */
+    margin: 0 auto; /* center on the page */
+}
+
+.product-card {
+    padding: 1rem;
+    font-family: 'Mina', sans-serif;
+    display: flex;
+    flex-direction: column; /* stack image, title, price */
+    height: auto; /* let height adjust based on content */
+    text-align: left; /* left-align text */
+    box-sizing: border-box; /* include padding in width */
+}
+
+.product-card img {
+    width: 100%;          /* fill card width */
+    height: 350px;        /* force same height for all images */
+    object-position: top;    /* crop the image to fit container */
+    border-radius: 4px;   /* optional */
+    display: block;       /* remove inline spacing */
+}
+
+.product-card h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0.25rem 0;
+}
+
+.product-card p {
+    font-weight: bold;
+    color: black;
+    margin: 0;
+}

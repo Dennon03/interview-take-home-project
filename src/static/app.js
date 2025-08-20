@@ -4,12 +4,41 @@ async function setup() {
 	// START HERE
 	// API Endpoint: GET /products
 	// Returns: Array of product objects with id, title, price (in cents), and array of images
-	// TODO: Fetch products from the API
-	// TODO: Render the products to the page in a responsive grid
-	// TODO: Sort the products by price (low to high by default)
-	// TODO: Implement search functionality
-	// BONUS: Use the refactored sorting function for dynamic sort order
-	// BONUS: Add error handling for the fetch request
+	// [x] TODO: Fetch products from the API
+	// [x] TODO: Render the products to the page in a responsive grid
+	// [x] TODO: Sort the products by price (low to high by default)
+	// [] TODO: Implement search functionality
+	// [] BONUS: Use the refactored sorting function for dynamic sort order
+	// [] BONUS: Add error handling for the fetch request
+	try {
+		//Fetch products from API
+		const response = await fetch('/products');
+
+		//Check if the response is successful
+		if(!response.ok) {
+			throw new Error('HTTP error! status: ${response.status');
+		}
+		
+		//Convert response to JSON
+		const products = await response.json();
+
+		//Check the data
+		console.log(products);
+
+		// Test sorting function (ascending)
+        //const sortedAsc = sortProductsByPrice(products, "asc");
+        //console.log("Products sorted ascending:", sortedAsc);
+
+        // Test sorting function (descending)
+        //const sortedDesc = sortProductsByPrice(products, "desc");
+        //console.log("Products sorted descending:", sortedDesc);
+
+		//render products to grid
+		renderProducts(products);
+
+	} catch (error) {
+		console.error('Failed to fetch proucts:', error);
+	}
 }
 /**
  * Sorts an array of products by price in ascending or descending order.
@@ -31,6 +60,36 @@ async function setup() {
  * @param {string} sortOrder - Either "asc" for ascending or "desc" for descending sort order.
  * @returns {Array} - A new array of products sorted by price in the specified order.
  */
+
+function renderProducts(products) {
+    const grid = document.getElementById("products-grid");
+    grid.innerHTML = ""; // clear any existing content
+
+    products.forEach(product => { //loops through each product
+        // Use the 'src' property of the first image
+        const imageUrl = product.images && product.images.length ? product.images[0].src : ""; //checks if product has an image array and if its not empty, grabs src from first item in array
+
+        const card = document.createElement("div"); //creating the new card 
+        card.className = "product-card"; // assign the card a class and give it the name "product-card"
+
+        card.innerHTML = ` 
+            <img src="${imageUrl}" alt="${product.title}">
+            <h3>${product.title}</h3>
+            <p>$${(product.price / 100).toFixed(2)}</p>
+        `; // create html for inner of the card img - title - price 
+
+        grid.appendChild(card); // adds the card as a child of the grid container 
+    });
+}
+
+function sortProductsByPrice(products, sortOrder = "asc") {
+	return [...products].sort((a, b) => //use spread operator to get a copy of all the products 
+		sortOrder === "asc" ? a.price - b.price : b.price - a.price // algorithm for asc abd desc sort defaults to asc
+		// Ex:asc sort a.price = 1000, b.price = 2000 → 1000 - 2000 = -100 → a comes before b 
+		// Ex:desc sort a.price = 1000, b.price = 2000 → 2000 - 1000 = 100 → b comes before a 
+	);
+}
+
 function messyFunction(data1, data2) {
 	let t = [];
 	for (let i = 0; i < data1.length; i++) {
