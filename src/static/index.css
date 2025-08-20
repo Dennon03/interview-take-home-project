@@ -67,7 +67,6 @@ body {
     width: 100%;          /* fill card width */
     height: 350px;        /* force same height for all images */
     object-position: top;    /* crop the image to fit container */
-    border-radius: 4px;   /* optional */
     display: block;       /* remove inline spacing */
 }
 
