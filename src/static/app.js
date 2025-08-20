@@ -40,7 +40,7 @@ async function setup() {
 		searchInput.addEventListener("input", () => {
 			const query = searchInput.value.toLowerCase();
 			const filteredProducts = products.filter(product =>
-				product.title.toLocaleLowerCase().includes(query)
+				product.title.toLowerCase().includes(query)
 			);
 			renderProducts(filteredProducts);
 		})
