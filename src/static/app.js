@@ -6,7 +6,7 @@ async function setup() {
 	// Returns: Array of product objects with id, title, price (in cents), and array of images
 	// [x] TODO: Fetch products from the API
 	// [x] TODO: Render the products to the page in a responsive grid
-	// [x] TODO: Sort the products by price (low to high by default)
+	// [] TODO: Sort the products by price (low to high by default)
 	// [x] TODO: Implement search functionality
 	// [] BONUS: Use the refactored sorting function for dynamic sort order
 	// [] BONUS: Add error handling for the fetch request
@@ -33,8 +33,11 @@ async function setup() {
         //const sortedDesc = sortProductsByPrice(products, "desc");
         //console.log("Products sorted descending:", sortedDesc);
 
+		// Sort products by price ascending before rendering
+		const sortedProducts = sortProductsByPrice(products, "asc");
+
 		//render products to grid
-		renderProducts(products);
+		renderProducts(sortedProducts);
 
 		const searchInput = document.getElementById("search-products");
 		searchInput.addEventListener("input", () => {
