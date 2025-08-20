@@ -6,7 +6,7 @@ async function setup() {
 	// Returns: Array of product objects with id, title, price (in cents), and array of images
 	// [x] TODO: Fetch products from the API
 	// [x] TODO: Render the products to the page in a responsive grid
-	// [] TODO: Sort the products by price (low to high by default)
+	// [x] TODO: Sort the products by price (low to high by default)
 	// [x] TODO: Implement search functionality
 	// [] BONUS: Use the refactored sorting function for dynamic sort order
 	// [] BONUS: Add error handling for the fetch request

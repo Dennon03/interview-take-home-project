@@ -81,3 +81,15 @@ body {
     color: black;
     margin: 0;
 }
+
+/* Mobile responsiveness */
+@media screen and (max-width: 430px) {
+    #products-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+    }
+
+    .product-card img {
+        height: auto;       /* let height adjust to width */
+        max-height: 300px;  /* optional: limit maximum height */
+    }
+}
