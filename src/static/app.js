@@ -7,7 +7,7 @@ async function setup() {
 	// [x] TODO: Fetch products from the API
 	// [x] TODO: Render the products to the page in a responsive grid
 	// [x] TODO: Sort the products by price (low to high by default)
-	// [] TODO: Implement search functionality
+	// [x] TODO: Implement search functionality
 	// [] BONUS: Use the refactored sorting function for dynamic sort order
 	// [] BONUS: Add error handling for the fetch request
 	try {
@@ -35,6 +35,15 @@ async function setup() {
 
 		//render products to grid
 		renderProducts(products);
+
+		const searchInput = document.getElementById("search-products");
+		searchInput.addEventListener("input", () => {
+			const query = searchInput.value.toLowerCase();
+			const filteredProducts = products.filter(product =>
+				product.title.toLocaleLowerCase().includes(query)
+			);
+			renderProducts(filteredProducts);
+		})
 
 	} catch (error) {
 		console.error('Failed to fetch proucts:', error);
