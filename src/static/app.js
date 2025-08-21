@@ -9,7 +9,7 @@ async function setup() {
 	// [x] TODO: Sort the products by price (low to high by default)
 	// [x] TODO: Implement search functionality
 	// [] BONUS: Use the refactored sorting function for dynamic sort order
-	// [] BONUS: Add error handling for the fetch request
+	// [x] BONUS: Add error handling for the fetch request
 	try {
 		//Fetch products from API
 		const response = await fetch('/products');
@@ -88,7 +88,7 @@ function renderProducts(products) {
             <img src="${imageUrl}" alt="${product.title}">
             <h3>${product.title}</h3>
             <p>$${(product.price / 100).toFixed(2)}</p>
-        `; // create html for inner of the card img - title - price 
+        `; // create html for inner of the card: img - title - price 
 
         grid.appendChild(card); // adds the card as a child of the grid container 
     });
@@ -102,7 +102,7 @@ function sortProductsByPrice(products, sortOrder = "asc") {
 	);
 }
 
-function messyFunction(data1, data2) {
+function messyFunction(data1, data2) { //this is just extrtemely slow 
 	let t = [];
 	for (let i = 0; i < data1.length; i++) {
 		t.push(data1[i]);
